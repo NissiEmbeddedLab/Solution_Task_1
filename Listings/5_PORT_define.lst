@@ -1,0 +1,51 @@
+C51 COMPILER V9.60.0.0   5_PORT_DEFINE                                                     05/10/2020 19:37:29 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE 5_PORT_DEFINE
+OBJECT MODULE PLACED IN .\Objects\5_PORT_define.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 5_PORT_define.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\5_PORT_define.lst) TABS(2) OBJECT(.\Objects\5_PORT_define.obj)
+
+line level    source
+
+   1          /*  It is an examole to declare the PORT using #define directive
+   2              MSDelay() function to create 10mSec delay
+   3              Author    : L.Boaz
+   4              Mail id   : laxsam89@gmail.com
+   5              Phone no  : +91 95972 91816 */
+   6          
+   7          #include<reg51.h>
+   8          #define Read_Data P1                    //Assign the variable Read_Data for PORT1
+   9          #define Write_Data P2                   //Assign the variable Write_Data for PORT2
+  10          void MSDelay(unsigned int itime);
+  11          unsigned int x;
+  12          void main(void)
+  13          {
+  14   1      for(x=0;x<5;x++)                  //Pass value from 0 to 255 or 0x00 to 0xff to PORT 1 & PORT 2
+  15   1      {
+  16   2        Read_Data = 0xFF;                       //Pass from 0x00 to 0xff
+  17   2        MSDelay(200);
+  18   2        Write_Data = 0xAA;                    //Pass from 0xFF to 0x00
+  19   2        MSDelay(200);                     //Elapse time for 1 sec by 10*100msec
+  20   2      }
+  21   1      }
+  22          void MSDelay(unsigned int itime)
+  23          {
+  24   1      unsigned int i,j;
+  25   1      for(i=0;i<itime;i++)
+  26   1      for(j=0;j<1275;j++);
+  27   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     75    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
